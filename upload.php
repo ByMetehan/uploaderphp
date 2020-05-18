@@ -9,7 +9,7 @@ $uploads = $dizin . basename($_FILES['dosya']['name']);
  
 if (move_uploaded_file($_FILES['dosya']['tmp_name'], $uploads))
 {
-    echo '<img src="tamam.jpg" width="100"><br>';
+    echo '<img src="ok.jpg" width="100"><br>';
 echo "Your File Has Been Uploaded..<br>";
  
 } else {
