@@ -1,48 +1,21 @@
+<html>
+<head>
+<title>Dosya yükleme</title><meta charset="utf-8">
+</head>
+<body> <center>
 <?php
-if (isset($_POST["submit"])){
-
-$file = $_FILES["file"];
-
-$fileName = $_FILES["file"]["name"];
-$fileTmpName = $_FILES["file"]["tmp_name"];
-$fileSize = $_FILES["file"]["size"];
-$fileError = $_FILES["file"]["error"];
-$fileType = $_FILES["file"]["type"];
-
-$fileExt = explode(".", $fileName);
-$fileActualExt = strtolower(end($fileExt));
-
-$allowed = array("jpg", "jpeg", "png","pdf");
-if (in_array($fileActualExt, $allowed)){
- if ($fileError === 0) {
-
-    
- if ($fileSize < 1048576){
+$dizin = 'uploads/';
+$uploads = $dizin . basename($_FILES['dosya']['name']);
  
-     $fileNameNew = uniqid("", true).".".$fileActualExt;
-     $fileDestination = "uploads/".$fileNameNew
-     move_uploaded_file($fileTmpName, $fileDestination);
-     header("Location: index.php?uploadsuccess");
- } else {
-     
-     echo("Dosyanız o Kadar Büyük ki Acıtıyor");
- }
- }
- }
- else{
-    echo("Dosyanız Yüklenemedi.Tekrar Deneyiniz"); }
-
-else{
-    echo "Bu Dosyayı Yükleyemessiniz!"; }
-}
-
-
-
-
-
-
-
-
-
+if (move_uploaded_file($_FILES['dosya']['tmp_name'], $uploads))
+{
+    echo '<img src="tamam.jpg" width="100"><br>';
+echo "Your File Has Been Uploaded..<br>";
+ 
+} else {
+    echo "Your file couldnt be loaded!\n";
 }
 ?>
+</center>
+</body>
+</html>
