@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>Dosya yükleme</title><meta charset="utf-8">
+<title>File Uploader</title><meta charset="utf-8">
 </head>
 <body> <center>
 <?php
-$dizin = 'uploads/';
-$uploads = $dizin . basename($_FILES['dosya']['name']);
+$dizn = 'uploads/';
+$uploads = $dizn . basename($_FILES['dosya']['name']);
  
 if (move_uploaded_file($_FILES['dosya']['tmp_name'], $uploads))
 {
